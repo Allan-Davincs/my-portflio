@@ -588,7 +588,7 @@ async def embed_chunks(chunks: list[str]) -> list[list[float]]:
     status: "Active",
     links: {
       github: "https://github.com/Allan-Davincs/UNITRANSLATE_V2",
-      demo: "https://unitranslate-v2-e7685a48df3a.herokuapp.com/",
+      demo: "https://uni-translate-7fc03e64297f.herokuapp.com/",
     },
     overview:
       "UniTranslate is a web and mobile-ready translation platform that bridges language barriers for users across East Africa and beyond. It combines Vue.js frontend with Flask backend and DeepL API for high-quality translations.",
