@@ -1,7 +1,3 @@
-# Developer Docs Theme Portfolio
-
-A senior developer portfolio styled like API documentation (Stripe/Vercel docs aesthetic).
-
 ## Features
 
 - **SplashCoder Screen** — Terminal-style boot animation on first visit
