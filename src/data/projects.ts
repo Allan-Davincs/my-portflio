@@ -377,19 +377,19 @@ export async function handleMusicDownload({ query, sock, jid }) {
       "https://res.cloudinary.com/ddlegxejs/image/upload/v1782450980/VeloRoute-logo_ywb2qe.png",
     links: {
       github: "https://github.com/Allan-Davincs/VeloRoute-Proxy",
-      demo: "https://veloroute-proxy-frontend-a5705033a4ef.herokuapp.com",
+      demo: "https://veloroute-dashboard-f2dbafb3df20.herokuapp.com",
       liveDemos: [
         {
           label: "Dashboard",
-          url: "https://veloroute-proxy-frontend-a5705033a4ef.herokuapp.com",
+          url: "https://veloroute-dashboard-f2dbafb3df20.herokuapp.com",
         },
         {
           label: "Backend API",
-          url: "https://veloroute-backend-bd3434ba5cd4.herokuapp.com/api/metrics",
+          url: "https://veloroute-api-bce1aa2e79bb.herokuapp.com//api/metrics",
         },
         {
           label: "Proxy",
-          url: "https://veloroute-backend-bd3434ba5cd4.herokuapp.com/get",
+          url: "https://veloroute-api-bce1aa2e79bb.herokuapp.com//get",
         },
       ],
     },
