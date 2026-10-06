@@ -414,7 +414,7 @@ export async function startWhatsAppSession() {
     "latencyMs": 1840
   }
 }`,
-    codeSnippets: [
+    codeSnippets: [ 
       {
         title: "Baileys Web Session Init",
         language: "javascript",
