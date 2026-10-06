@@ -238,6 +238,109 @@ export async function sendOrderSms(phone: string, orderId: string) {
     ],
   },
   {
+    slug: "Kiwanda OS",
+    navLabel: "kiwanda-os",
+    method: "GET",
+    category: "IOT",
+    title: "Kiwanda OS",
+    subtitle: "Operational Security Systems For the Industrial and SME Sectors in Africa",
+    description:
+      "Kiwanda OS is a platform that provides operational security systems for the industrial and SME sectors in Africa. It is Security System Utilizing IOTs and Ai to provide real-time monitoring and alerts for the industrial and SME sectors.",
+    tech: [
+      "Node.js",
+      "Python",
+      "WebSocket",
+      "USSD",
+      "SMS",
+      "ESP32",
+      "Sensors",
+    ],
+    metrics: {
+      throughput: "500+ msg/sec",
+      language: "C++",
+      latency: "<200ms",
+    },
+    status: "Archived",
+    logo: "https://files.catbox.moe/a44m93.jpg",
+    links: {
+      github: "https://github.com/Allan-Davincs/KiwandaOS",
+      demo: "https://kiwanda-os.vercel.app",
+    },
+    overview:
+      "Kiwanda Os is a Low-Cost Operational Security System for the Industrial and SME Sectors in Africa. It is a system that uses IOTs and Ai to provide real-time monitoring and alerts for the industrial and SME sectors.",
+    problem: [
+      "Lack of operational security systems for the industrial and SME sectors in Africa",
+      "High cost of operational security systems for the industrial and SME sectors in Africa",
+      "Fear of not being able to monitor and alert in case of a security breach",
+    ],
+    outcomes: [
+      "",
+      "WebSocket-based real-time message handling with sub-200ms command dispatch",
+      "Pluggable external API architecture — music download and other third-party integrations",
+      "Project archived after proving the concept; codebase preserved on GitHub",
+    ],
+    architecture:
+      "Node.js hosts the Baileys client, maintaining a persistent WhatsApp Web Session over WebSockets. Incoming messages are routed through a command dispatcher. OpenAI handles natural language where needed. Redis stores session state and rate limits. External API plugins (music download, etc.) are invoked via command hooks and return media or links back to the chat. No Meta Cloud API or webhook infrastructure required.",
+    architectureDiagram: `┌──────────────┐     ┌─────────────────┐     ┌──────────────┐
+│  WhatsApp    │◀───▶│  Baileys Client │────▶│   OpenAI     │
+│  Web Session │ WS  │  (Web Session)  │     │   GPT API    │
+└──────────────┘     └────────┬────────┘     └──────────────┘
+                              │
+              ┌───────────────┼───────────────┐
+              ▼               ▼               ▼
+       ┌────────────┐  ┌────────────┐  ┌──────────────┐
+       │   Redis    │  │  Command   │  │ External APIs│
+       │ (Sessions) │  │  Router    │  │ (Music, etc.)│
+       └────────────┘  └────────────┘  └──────────────┘`,
+    apiSchema: `{
+  "endpoint": "POST /api/v1/plugins/music/download",
+  "description": "External API plugin — download music via WhatsApp command",
+  "request": {
+    "command": "/music download",
+    "args": { "query": "Diamond Platnumz Jeje" },
+    "groupId": "120363000000000000@g.us",
+    "sender": "+255700000000",
+    "session": "baileys_web_session_id"
+  },
+  "response": {
+    "status": "ok",
+    "type": "audio",
+    "mediaUrl": "https://cdn.example.com/track.mp3",
+    "title": "Jeje — Diamond Platnumz",
+    "deliveredVia": "baileys_websocket",
+    "latencyMs": 1840
+  }
+}`,
+    codeSnippets: [
+      {
+        title: "Baileys Web Session Init",
+        language: "javascript",
+        code: `// src/whatsapp/baileysClient.js
+import makeWASocket, { useMultiFileAuthState } from "@whiskeysockets/baileys";
+
+export async function startWhatsAppSession() {
+  const { state, saveCreds } = await useMultiFileAuthState("./auth");
+
+  const sock = makeWASocket({
+    auth: state,
+    printQRInTerminal: true,
+  });
+
+  sock.ev.on("creds.update", saveCreds);
+  sock.ev.on("messages.upsert", async ({ messages }) => {
+    const msg = messages[0];
+    if (!msg.message) return;
+    await dispatchCommand(sock, msg);
+  });
+
+  return sock;
+}`,
+      },
+     
+    ],
+  },
+
+  {
     slug: "flex-ai",
     navLabel: "flex-ai",
     method: "GET",
@@ -357,6 +460,7 @@ export async function handleMusicDownload({ query, sock, jid }) {
       },
     ],
   },
+  
   {
     slug: "veloroute-proxy",
     navLabel: "veloroute-proxy",
