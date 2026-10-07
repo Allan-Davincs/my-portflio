@@ -42,7 +42,7 @@ export const navSections = [
     items: [{ slug: "introduction", label: "introduction", method: "GET" as const }],
   },
   {
-    label: "CORE_SYSTEMS",
+    label: "E_COMMERCE",
     items: [{ slug: "jenga-online", label: "jenga-online", method: "GET" as const }],
   },
   {

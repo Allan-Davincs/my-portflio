@@ -24,7 +24,7 @@ export const navItemIcons: Record<string, NavIcon> = {
   },
   "kiwanda-os": {
     type: "image",
-    src: "https://kiwanda-os.vercel.app/KiwandaOS-Logo.png",
+    src: "https://cdn.imageurlgenerator.com/uploads/c77df0f3-9452-4df5-8095-294180f0f687.png",
     alt: "KiwandaOS",
   },
   "veloroute-proxy": {

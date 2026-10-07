@@ -1,6 +1,6 @@
 export const docsSectionLabels: Record<string, string> = {
   GET: "Overview",
-  CORE_SYSTEMS: "Core Systems",
+  E_COMMERCE: "E-Commerce",
   IOT: "Industrial IoT",
   NETWORKING: "Networking",
   AI_AGENTS: "AI Agents",
