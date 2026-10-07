@@ -247,10 +247,11 @@ export async function sendOrderSms(phone: string, orderId: string) {
     method: "GET",
     category: "IOT",
     title: "KiwandaOS",
-    subtitle: "Operational security and industrial IoT platform for African SMEs",
+    subtitle: "Industrial intelligence for safer factories",
     description:
-      "KiwandaOS brings industrial monitoring, access alerts, and fast incident response into a single low-cost platform for African factories, warehouses, and SMEs.",
+      "Distributed industrial monitoring, emergency response, machine-awareness, and computer-vision security platform for African manufacturing SMEs.",
     tech: [
+      "Next.js",
       "Node.js",
       "Python",
       "MQTT",
@@ -258,42 +259,42 @@ export async function sendOrderSms(phone: string, orderId: string) {
       "USSD",
       "SMS",
       "ESP32",
-      "IoT",
+      "Computer Vision",
     ],
     metrics: {
       throughput: "1k+ events/sec",
       language: "Node.js + Python",
       latency: "<200ms",
     },
-    status: "Beta",
-    logo: "https://files.catbox.moe/a44m93.jpg",
+    status: "Production",
+    logo: "https://kiwanda-os.vercel.app/KiwandaOS-Logo.png",
     links: {
       github: "https://github.com/Allan-Davincs/KiwandaOS",
       demo: "https://kiwanda-os.vercel.app",
     },
     overview:
-      "KiwandaOS is a low-cost operational security system for industrial and SME sites in Africa. It combines sensor telemetry, gateway rules, and alert workflows to detect incidents, monitor site activity, and trigger fast responses through SMS, USSD, and dashboard alerts.",
+      "KiwandaOS gives factory teams one clear view of security, machines, alerts, and emergency response. Built for African manufacturing SMEs, it helps operators detect risk earlier, monitor live site activity, and act with confidence from a single operational dashboard.",
     problem: [
-      "Many SMEs and factories lack affordable live monitoring for equipment, access, and security events",
-      "Traditional industrial security systems are too expensive and hard to deploy in local environments",
-      "Teams need fast visibility and escalation when incidents happen, even with limited connectivity and low technical expertise",
+      "Factories and SMEs often lack a unified view of machine health, security events, and emergency response",
+      "High-risk incidents escalate quickly when operators rely on disconnected systems, manual checks, and slow reporting",
+      "Industrial teams need a practical platform that is affordable, measurable, and easy to operate in fast-moving environments",
     ],
     outcomes: [
-      "Live sensor-to-dashboard visibility across industrial environments and SME sites",
-      "Rule-based alerts via SMS and USSD for rapid response and escalation",
-      "A modular architecture ready for future edge devices, AI-driven detection, and local automation",
+      "One operator view across machines, cameras, and site events",
+      "Earlier detection and faster emergency response across live operations",
+      "A modular industrial safety platform built for African factories and SMEs to scale with confidence",
     ],
     architecture:
-      "ESP32-based edge devices publish telemetry to a lightweight gateway over MQTT and WebSockets. Node.js handles real-time event routing, rule execution, and alert dispatch, while Python services support analytics and AI-ready processing. The system exposes an operational dashboard and delivers notifications through SMS and USSD for fast operator response.",
-    architectureDiagram: `┌───────────────┐   MQTT/WS   ┌───────────────┐
-│ ESP32 Sensors │────────────▶│ Edge Gateway  │────▶│ Node.js Rules │
-└───────────────┘             └──────┬────────┘     │ Event Engine │
-                                       │             └──────┬────────┘
-                                       │                    │
-                           ┌───────────▼───────────┐   ┌────▼────────────┐
-                           │ Python Analytics /   │   │ SMS + USSD     │
-                           │ AI Processing        │   │ Dashboard Alerts│
-                           └──────────────────────┘   └─────────────────┘`,
+      "Edge sensors, cameras, and industrial gateways stream telemetry into a real-time operations layer. KiwandaOS correlates events, triggers workflow rules, and pushes actionable alerts to operators through dashboard, SMS, and USSD channels for faster response and safer control rooms.",
+    architectureDiagram: `┌──────────────┐  Sensor + Camera  ┌──────────────┐
+│ Factory Edge │──────────────────▶│ KiwandaOS     │────▶│ Response Layer │
+│ Devices      │                    │ Event Engine  │     │ SMS / USSD     │
+└──────────────┘                    └──────┬───────┘     └──────┬────────┘
+                                           │                     │
+                                      ┌────▼──────────────┐  ┌────▼────────────┐
+                                      │ Live Dashboard    │  │ Alert Automation │
+                                      │ Machine & Safety  │  │ Rule Engine      │
+                                      └───────────────────┘  └──────────────────┘`,
     apiSchema: `{
   "endpoint": "POST /api/events/ingest",
   "request": {

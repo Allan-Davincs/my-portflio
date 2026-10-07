@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "https", hostname: "res.cloudinary.com" },
       { protocol: "https", hostname: "files.catbox.moe" },
+      { protocol: "https", hostname: "kiwanda-os.vercel.app" },
     ],
   },
 };
