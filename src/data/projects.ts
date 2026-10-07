@@ -46,6 +46,10 @@ export const navSections = [
     items: [{ slug: "jenga-online", label: "jenga-online", method: "GET" as const }],
   },
   {
+    label: "IOT",
+    items: [{ slug: "kiwanda-os", label: "kiwanda-os", method: "GET" as const }],
+  },
+  {
     label: "NETWORKING",
     items: [{ slug: "veloroute-proxy", label: "veloroute-proxy", method: "GET" as const }],
   },
@@ -238,105 +242,102 @@ export async function sendOrderSms(phone: string, orderId: string) {
     ],
   },
   {
-    slug: "Kiwanda OS",
+    slug: "kiwanda-os",
     navLabel: "kiwanda-os",
     method: "GET",
     category: "IOT",
-    title: "Kiwanda OS",
-    subtitle: "Operational Security Systems For the Industrial and SME Sectors in Africa",
+    title: "KiwandaOS",
+    subtitle: "Operational security and industrial IoT platform for African SMEs",
     description:
-      "Kiwanda OS is a platform that provides operational security systems for the industrial and SME sectors in Africa. It is Security System Utilizing IOTs and Ai to provide real-time monitoring and alerts for the industrial and SME sectors.",
+      "KiwandaOS brings industrial monitoring, access alerts, and fast incident response into a single low-cost platform for African factories, warehouses, and SMEs.",
     tech: [
       "Node.js",
       "Python",
+      "MQTT",
       "WebSocket",
       "USSD",
       "SMS",
       "ESP32",
-      "Sensors",
+      "IoT",
     ],
     metrics: {
-      throughput: "500+ msg/sec",
-      language: "C++",
+      throughput: "1k+ events/sec",
+      language: "Node.js + Python",
       latency: "<200ms",
     },
-    status: "Archived",
+    status: "Beta",
     logo: "https://files.catbox.moe/a44m93.jpg",
     links: {
       github: "https://github.com/Allan-Davincs/KiwandaOS",
       demo: "https://kiwanda-os.vercel.app",
     },
     overview:
-      "Kiwanda Os is a Low-Cost Operational Security System for the Industrial and SME Sectors in Africa. It is a system that uses IOTs and Ai to provide real-time monitoring and alerts for the industrial and SME sectors.",
+      "KiwandaOS is a low-cost operational security system for industrial and SME sites in Africa. It combines sensor telemetry, gateway rules, and alert workflows to detect incidents, monitor site activity, and trigger fast responses through SMS, USSD, and dashboard alerts.",
     problem: [
-      "Lack of operational security systems for the industrial and SME sectors in Africa",
-      "High cost of operational security systems for the industrial and SME sectors in Africa",
-      "Fear of not being able to monitor and alert in case of a security breach",
+      "Many SMEs and factories lack affordable live monitoring for equipment, access, and security events",
+      "Traditional industrial security systems are too expensive and hard to deploy in local environments",
+      "Teams need fast visibility and escalation when incidents happen, even with limited connectivity and low technical expertise",
     ],
     outcomes: [
-      "",
-      "WebSocket-based real-time message handling with sub-200ms command dispatch",
-      "Pluggable external API architecture — music download and other third-party integrations",
-      "Project archived after proving the concept; codebase preserved on GitHub",
+      "Live sensor-to-dashboard visibility across industrial environments and SME sites",
+      "Rule-based alerts via SMS and USSD for rapid response and escalation",
+      "A modular architecture ready for future edge devices, AI-driven detection, and local automation",
     ],
     architecture:
-      "Node.js hosts the Baileys client, maintaining a persistent WhatsApp Web Session over WebSockets. Incoming messages are routed through a command dispatcher. OpenAI handles natural language where needed. Redis stores session state and rate limits. External API plugins (music download, etc.) are invoked via command hooks and return media or links back to the chat. No Meta Cloud API or webhook infrastructure required.",
-    architectureDiagram: `┌──────────────┐     ┌─────────────────┐     ┌──────────────┐
-│  WhatsApp    │◀───▶│  Baileys Client │────▶│   OpenAI     │
-│  Web Session │ WS  │  (Web Session)  │     │   GPT API    │
-└──────────────┘     └────────┬────────┘     └──────────────┘
-                              │
-              ┌───────────────┼───────────────┐
-              ▼               ▼               ▼
-       ┌────────────┐  ┌────────────┐  ┌──────────────┐
-       │   Redis    │  │  Command   │  │ External APIs│
-       │ (Sessions) │  │  Router    │  │ (Music, etc.)│
-       └────────────┘  └────────────┘  └──────────────┘`,
+      "ESP32-based edge devices publish telemetry to a lightweight gateway over MQTT and WebSockets. Node.js handles real-time event routing, rule execution, and alert dispatch, while Python services support analytics and AI-ready processing. The system exposes an operational dashboard and delivers notifications through SMS and USSD for fast operator response.",
+    architectureDiagram: `┌───────────────┐   MQTT/WS   ┌───────────────┐
+│ ESP32 Sensors │────────────▶│ Edge Gateway  │────▶│ Node.js Rules │
+└───────────────┘             └──────┬────────┘     │ Event Engine │
+                                       │             └──────┬────────┘
+                                       │                    │
+                           ┌───────────▼───────────┐   ┌────▼────────────┐
+                           │ Python Analytics /   │   │ SMS + USSD     │
+                           │ AI Processing        │   │ Dashboard Alerts│
+                           └──────────────────────┘   └─────────────────┘`,
     apiSchema: `{
-  "endpoint": "POST /api/v1/plugins/music/download",
-  "description": "External API plugin — download music via WhatsApp command",
+  "endpoint": "POST /api/events/ingest",
   "request": {
-    "command": "/music download",
-    "args": { "query": "Diamond Platnumz Jeje" },
-    "groupId": "120363000000000000@g.us",
-    "sender": "+255700000000",
-    "session": "baileys_web_session_id"
+    "siteId": "site_dar_tz_04",
+    "sensorId": "door_ashburn_12",
+    "type": "intrusion",
+    "value": true,
+    "timestamp": "2026-10-08T10:45:00Z"
   },
   "response": {
-    "status": "ok",
-    "type": "audio",
-    "mediaUrl": "https://cdn.example.com/track.mp3",
-    "title": "Jeje — Diamond Platnumz",
-    "deliveredVia": "baileys_websocket",
-    "latencyMs": 1840
+    "status": "accepted",
+    "eventId": "evt_5721",
+    "alertLevel": "high",
+    "channels": ["sms", "dashboard", "ussd"]
   }
 }`,
     codeSnippets: [
       {
-        title: "Baileys Web Session Init",
-        language: "javascript",
-        code: `// src/whatsapp/baileysClient.js
-import makeWASocket, { useMultiFileAuthState } from "@whiskeysockets/baileys";
+        title: "Telemetry Ingest",
+        language: "typescript",
+        code: `// app/api/events/ingest/route.ts
+export async function POST(req: Request) {
+  const payload = await req.json();
+  const event = await persistEvent(payload);
+  await triggerRules(event);
 
-export async function startWhatsAppSession() {
-  const { state, saveCreds } = await useMultiFileAuthState("./auth");
-
-  const sock = makeWASocket({
-    auth: state,
-    printQRInTerminal: true,
+  return Response.json({
+    status: "accepted",
+    eventId: event.id,
+    alertLevel: event.alertLevel,
   });
-
-  sock.ev.on("creds.update", saveCreds);
-  sock.ev.on("messages.upsert", async ({ messages }) => {
-    const msg = messages[0];
-    if (!msg.message) return;
-    await dispatchCommand(sock, msg);
-  });
-
-  return sock;
 }`,
       },
-     
+      {
+        title: "Alert Dispatch",
+        language: "javascript",
+        code: `// lib/alerts/dispatch.js
+export async function triggerRules(event) {
+  if (event.type === "intrusion" && event.value === true) {
+    await sendSms(event.siteId, "Intrusion detected at site.");
+    await sendUssdAlert(event.siteId, "LOCKDOWN");
+  }
+}`,
+      },
     ],
   },
 
@@ -814,5 +815,19 @@ const renderSection = () => {
 ];
 
 export function getProjectBySlug(slug: string): Project | undefined {
-  return projects.find((p) => p.slug === slug);
+  const normalized = slug
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
+  return projects.find((project) => {
+    const projectSlug = project.slug
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+
+    return projectSlug === normalized || project.navLabel === normalized;
+  });
 }

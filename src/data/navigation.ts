@@ -22,6 +22,11 @@ export const navItemIcons: Record<string, NavIcon> = {
     src: "https://res.cloudinary.com/drmmje4fs/image/upload/v1781543238/JengaOnline_logo_e7mpzr_e_background_removal_f_png_h8tzkg.png",
     alt: "Jenga Online",
   },
+  "kiwanda-os": {
+    type: "image",
+    src: "https://files.catbox.moe/a44m93.jpg",
+    alt: "KiwandaOS",
+  },
   "veloroute-proxy": {
     type: "image",
     src: "https://res.cloudinary.com/ddlegxejs/image/upload/v1782450980/VeloRoute-logo_ywb2qe.png",
