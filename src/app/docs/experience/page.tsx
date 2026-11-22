@@ -17,6 +17,7 @@ export default function ExperiencePage() {
             </div>
             <div className="font-mono text-xs text-muted-foreground">
               @ {exp.company} · {exp.period}
+              {"location" in exp && ` · ${exp.location}`}
               {"employmentType" in exp && exp.employmentType && (
                 <span className="ml-2 rounded border border-border px-1.5 py-0.5 text-[10px] uppercase tracking-wide">
                   {exp.employmentType}

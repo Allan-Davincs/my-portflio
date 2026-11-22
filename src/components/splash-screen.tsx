@@ -20,9 +20,6 @@ const bootLines = [
   `> "${profile.tagline}"`,
 ];
 
-const SPLASH_VIDEO =
-  "https://res.cloudinary.com/ddlegxejs/video/upload/v1782485628/293508100735416900_esldvb.mp4";
-
 export function SplashScreen({ onComplete }: SplashScreenProps) {
   const [visibleLines, setVisibleLines] = useState(0);
   const [showEnter, setShowEnter] = useState(false);
@@ -53,20 +50,8 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
 
   return (
     <div className="fixed inset-0 z-50 overflow-hidden bg-[#09090b]">
-      {/* Looping background video */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 h-full w-full object-cover opacity-35"
-        aria-hidden
-      >
-        <source src={SPLASH_VIDEO} type="video/mp4" />
-      </video>
-
-      {/* Dark overlay — dims video so terminal text stays readable */}
-      <div className="absolute inset-0 bg-[#09090b]/75 backdrop-blur-[1px]" />
+      <div className="splash-dots absolute inset-0" aria-hidden="true" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#09090b]/35 via-[#09090b]/70 to-[#09090b]" />
 
       <div className="relative z-10 flex min-h-screen items-center justify-center">
         <div className="w-full max-w-2xl px-6">

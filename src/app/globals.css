@@ -55,6 +55,58 @@ body {
   color: var(--foreground);
 }
 
+.splash-dots::before,
+.splash-dots::after {
+  position: absolute;
+  inset: -2rem;
+  content: "";
+  background-image: radial-gradient(circle, rgb(161 161 170 / 28%) 1px, transparent 1.5px);
+  background-size: 30px 30px;
+  mask-image: radial-gradient(ellipse at center, #000 10%, transparent 76%);
+}
+
+.splash-dots::before {
+  animation: splash-dots-forward 18s linear infinite;
+}
+
+.splash-dots::after {
+  background-position: 15px 15px;
+  background-size: 42px 42px;
+  opacity: 0;
+  animation: splash-dots-reverse 18s linear infinite;
+}
+
+@keyframes splash-dots-forward {
+  0%,
+  100% {
+    opacity: 0.65;
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    opacity: 0.25;
+    transform: translate3d(15px, 15px, 0);
+  }
+}
+
+@keyframes splash-dots-reverse {
+  0%,
+  100% {
+    opacity: 0.1;
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translate3d(-21px, -21px, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .splash-dots::before,
+  .splash-dots::after {
+    animation: none;
+  }
+}
+
 /* Shiki code block overrides */
 .shiki-wrapper pre {
   margin: 0;

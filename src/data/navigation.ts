@@ -12,7 +12,6 @@ export type NavIcon =
         | "experience"
         | "contact"
         | "blog"
-        | "terminal";
     };
 
 export const navItemIcons: Record<string, NavIcon> = {
@@ -21,6 +20,11 @@ export const navItemIcons: Record<string, NavIcon> = {
     type: "image",
     src: "https://res.cloudinary.com/drmmje4fs/image/upload/v1781543238/JengaOnline_logo_e7mpzr_e_background_removal_f_png_h8tzkg.png",
     alt: "Jenga Online",
+  },
+  epapers: {
+    type: "image",
+    src: "/epapers-logo.png",
+    alt: "E-Papers",
   },
   "kiwanda-os": {
     type: "image",
@@ -42,13 +46,6 @@ export const navItemIcons: Record<string, NavIcon> = {
     src: "https://res.cloudinary.com/ddlegxejs/image/upload/v1782450980/NEXA-AI-Logo_zbmglu.png",
     alt: "NEXA AI",
   },
-  unitranslate: {
-    type: "letter",
-    letter: "U",
-    bg: "#1d4ed8",
-    fg: "#ffffff",
-  },
-  "terminal-portfolio": { type: "lucide", icon: "terminal" },
   blog: { type: "lucide", icon: "blog" },
   skills: { type: "lucide", icon: "skills" },
   experience: { type: "lucide", icon: "experience" },

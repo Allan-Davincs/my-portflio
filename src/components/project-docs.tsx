@@ -34,6 +34,8 @@ export function ProjectDocs({ project, codeBlocks }: ProjectDocsProps) {
                 ? "border-amber-800 text-amber-500"
                 : project.status === "Archived"
                   ? "border-zinc-600 text-zinc-400"
+                    : project.status === "Research"
+                      ? "border-violet-800 text-violet-400"
                   : "border-blue-800 text-blue-500"
           )}
         >
@@ -57,7 +59,7 @@ export function ProjectDocs({ project, codeBlocks }: ProjectDocsProps) {
       <h1>{project.title}</h1>
       <p className="!text-foreground/80 !text-base">{project.subtitle}</p>
 
-      <MetricsBadge metrics={project.metrics} className="my-4" />
+      {project.metrics && <MetricsBadge metrics={project.metrics} className="my-4" />}
 
       {project.status === "Archived" && (
         <div className="mb-4 rounded-md border border-zinc-700 bg-zinc-900/50 px-4 py-3 font-mono text-xs text-zinc-400">
@@ -107,7 +109,7 @@ export function ProjectDocs({ project, codeBlocks }: ProjectDocsProps) {
 
       <Tabs.Root defaultValue="overview" className="mt-6">
         <Tabs.List className="flex gap-1 border-b border-border">
-          {["overview", "architecture", "api"].map((tab) => (
+          {["overview", "architecture", ...(project.apiSchema ? ["api"] : [])].map((tab) => (
             <Tabs.Trigger
               key={tab}
               value={tab}
@@ -159,16 +161,18 @@ export function ProjectDocs({ project, codeBlocks }: ProjectDocsProps) {
           ))}
         </Tabs.Content>
 
-        <Tabs.Content value="api" className="pt-6">
-          <h2>Schema</h2>
-          <p>
-            Example request/response payload for the core API endpoint of{" "}
-            {project.title}.
-          </p>
-          <pre className="overflow-x-auto rounded-lg border border-border bg-[#0c0c0e] p-4 font-mono text-xs leading-relaxed text-emerald-400/90">
-            {project.apiSchema}
-          </pre>
-        </Tabs.Content>
+        {project.apiSchema && (
+          <Tabs.Content value="api" className="pt-6">
+            <h2>Schema</h2>
+            <p>
+              Example request/response payload for the core API endpoint of{" "}
+              {project.title}.
+            </p>
+            <pre className="overflow-x-auto rounded-lg border border-border bg-[#0c0c0e] p-4 font-mono text-xs leading-relaxed text-emerald-400/90">
+              {project.apiSchema}
+            </pre>
+          </Tabs.Content>
+        )}
       </Tabs.Root>
     </div>
   );

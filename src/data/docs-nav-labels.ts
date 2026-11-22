@@ -1,11 +1,10 @@
 export const docsSectionLabels: Record<string, string> = {
   GET: "Overview",
   E_COMMERCE: "E-Commerce",
+  STUDENT_RESOURCES: "Student Resources",
   IOT: "Industrial IoT",
-  NETWORKING: "Networking",
+  RESEARCH: "Research",
   AI_AGENTS: "AI Agents",
-  TOOLS: "Tools",
-  TERMINAL: "Terminal",
   BLOG: "Blog",
   POST: "Resources",
 };

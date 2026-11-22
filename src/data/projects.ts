@@ -19,8 +19,8 @@ export interface Project {
   subtitle: string;
   description: string;
   tech: string[];
-  metrics: ProjectMetrics;
-  status: "Production" | "Beta" | "Active" | "Archived";
+  metrics?: ProjectMetrics;
+  status: "Production" | "Beta" | "Active" | "Archived" | "Research";
   links: {
     demo?: string;
     github?: string;
@@ -32,7 +32,7 @@ export interface Project {
   outcomes: string[];
   architecture: string;
   architectureDiagram: string;
-  apiSchema: string;
+  apiSchema?: string;
   codeSnippets: CodeSnippet[];
 }
 
@@ -46,27 +46,23 @@ export const navSections = [
     items: [{ slug: "jenga-online", label: "jenga-online", method: "GET" as const }],
   },
   {
+    label: "STUDENT_RESOURCES",
+    items: [{ slug: "epapers", label: "epapers", method: "GET" as const }],
+  },
+  {
     label: "IOT",
     items: [{ slug: "kiwanda-os", label: "kiwanda-os", method: "GET" as const }],
   },
   {
-    label: "NETWORKING",
-    items: [{ slug: "veloroute-proxy", label: "veloroute-proxy", method: "GET" as const }],
-  },
-  {
-    label: "AI_AGENTS",
+    label: "RESEARCH",
     items: [
-      { slug: "flex-ai", label: "flex-ai", method: "GET" as const },
+      { slug: "veloroute-proxy", label: "veloroute-proxy", method: "GET" as const },
       { slug: "nexa-ai", label: "nexa-ai", method: "GET" as const },
     ],
   },
   {
-    label: "TOOLS",
-    items: [{ slug: "unitranslate", label: "unitranslate", method: "GET" as const }],
-  },
-  {
-    label: "TERMINAL",
-    items: [{ slug: "terminal-portfolio", label: "terminal-portfolio", method: "GET" as const }],
+    label: "AI_AGENTS",
+    items: [{ slug: "flex-ai", label: "flex-ai", method: "GET" as const }],
   },
   {
     label: "BLOG",
@@ -270,7 +266,6 @@ export async function sendOrderSms(phone: string, orderId: string) {
     logo: "https://kiwanda-os.vercel.app/KiwandaOS-Logo.png",
     links: {
       github: "https://github.com/Allan-Davincs/KiwandaOS",
-      demo: "https://kiwanda-os.vercel.app",
     },
     overview:
       "KiwandaOS gives factory teams one clear view of security, machines, alerts, and emergency response. Built for African manufacturing SMEs, it helps operators detect risk earlier, monitor live site activity, and act with confidence from a single operational dashboard.",
@@ -467,18 +462,18 @@ export async function handleMusicDownload({ query, sock, jid }) {
     slug: "veloroute-proxy",
     navLabel: "veloroute-proxy",
     method: "GET",
-    category: "NETWORKING",
+    category: "GO_ROUTING_RESEARCH",
     title: "VeloRoute Proxy",
-    subtitle: "High-performance reverse proxy & load balancer",
+    subtitle: "Researching Go performance in HTTP routing",
     description:
-      "Production reverse proxy with pluggable load balancing, health checks, rate limiting, Prometheus metrics, and live monitoring dashboard.",
+      "Research project exploring Go concurrency, load-balancing strategies, and connection handling in an observable HTTP reverse proxy.",
     tech: ["Go", "Prometheus", "Docker", "HTTP/2", "WebSocket"],
     metrics: {
-      throughput: "10k+ req/sec",
+      throughput: "Under evaluation",
       language: "Go",
-      latency: "<50ms",
+      latency: "Profiling focus",
     },
-    status: "Production",
+    status: "Research",
     logo:
       "https://res.cloudinary.com/ddlegxejs/image/upload/v1782450980/VeloRoute-logo_ywb2qe.png",
     links: {
@@ -500,19 +495,19 @@ export async function handleMusicDownload({ query, sock, jid }) {
       ],
     },
     overview:
-      "VeloRoute sits between clients and backend servers, distributing HTTP traffic using pluggable algorithms (round-robin, least-connections, weighted). It monitors backend health, enforces per-IP rate limiting, and exposes Prometheus metrics plus a live dashboard.",
+      "VeloRoute is a research project investigating how Go can route HTTP traffic efficiently across backend services. It provides a test bed for comparing round-robin, least-connections, and weighted balancing while examining concurrency, connection reuse, routing throughput, and request latency. Health checks, rate limiting, and Prometheus metrics support operational observation during testing.",
     problem: [
       "Single-server deployments can't handle traffic spikes",
       "No visibility into backend health and request latency",
       "Need for rate limiting without adding application-layer complexity",
     ],
     outcomes: [
-      "10,000+ requests/sec throughput on modest hardware",
-      "Sub-50ms proxy overhead with connection pooling",
-      "Real-time dashboard for ops teams with Prometheus integration",
+      "Compare routing strategies under concurrent request workloads",
+      "Measure throughput and request latency to guide concurrency and connection-handling decisions",
+      "Use health checks and Prometheus metrics to observe backend and proxy behavior",
     ],
     architecture:
-      "Go-based reverse proxy with worker pool for concurrent connections. Health checker polls backends on configurable intervals. Rate limiter uses token bucket per client IP. Metrics exporter integrates with Grafana/Prometheus stack.",
+      "Go-based reverse proxy and load balancer used to study concurrent request handling and routing behavior. Configurable health checks monitor backends, rate limiting controls per-client traffic, and a Prometheus exporter provides telemetry for performance analysis.",
     architectureDiagram: `┌─────────┐     ┌──────────────┐     ┌─────────────┐
 │ Clients │────▶│  VeloRoute   │────▶│  Backend 1  │
 └─────────┘     │  Load Balancer│────▶│  Backend 2  │
@@ -572,21 +567,67 @@ docker compose up -d`,
     ],
   },
   {
+    slug: "epapers",
+    navLabel: "epapers",
+    method: "GET",
+    category: "STUDENT_RESOURCES",
+    title: "E-Papers",
+    subtitle: "A shared archive for university exam preparation",
+    description:
+      "A student-focused archive for discovering past examination papers by department, program, and module.",
+    tech: ["Student resources", "Past papers", "Department browsing", "Marking schemes"],
+    status: "Production",
+    logo: "/epapers-logo.png",
+    links: {
+      github: "https://github.com/allan-davincs/epapers",
+      demo: "https://epapers.co.tz/",
+    },
+    overview:
+      "E-Papers (Tusome Pamoja) helps students prepare with confidence by bringing examination papers into a shared academic archive. Students can browse papers by department, program, and module, then find papers by course code, year, and exam type. The archive also surfaces download counts and marking schemes where available.",
+    problem: [
+      "Students lacked one centralized place to find past examination papers",
+      "Course materials were difficult to discover when scattered across departments and student groups",
+    ],
+    outcomes: [
+      "Browse examination papers by department, program, and module",
+      "Find papers by course code, year, and exam type",
+      "Access marking schemes when available",
+    ],
+    architecture:
+      "A public web platform organizes examination-paper listings around academic departments, programs, and modules. Each listing presents course and exam details, with download activity and marking-scheme availability where provided.",
+    architectureDiagram: `┌───────────────┐
+│    Student    │
+└───────┬───────┘
+        │ Browse
+        ▼
+┌───────────────────────┐
+│ Department / Program  │
+│        / Module       │
+└───────────┬───────────┘
+            │ Find papers
+            ▼
+┌───────────────────────┐
+│ Exam Papers & Schemes │
+│ Course · Year · Type  │
+└───────────────────────┘`,
+    codeSnippets: [],
+  },
+  {
     slug: "nexa-ai",
     navLabel: "nexa-ai",
     method: "GET",
-    category: "AI_AGENTS",
+    category: "RAG_RESEARCH",
     title: "NEXA AI",
-    subtitle: "Private AI brain for enterprise documents",
+    subtitle: "Independent research into enterprise retrieval-augmented generation",
     description:
-      "Production RAG system for querying your own files — PDFs, Markdown, code — with strict anti-hallucination rules and grounded answers.",
+      "A personal research project exploring how retrieval-augmented generation can help users query enterprise documents with relevant context and source references.",
     tech: ["Python", "FastAPI", "PostgreSQL", "pgvector", "OpenAI", "Docker"],
     metrics: {
-      throughput: "200+ queries/min",
+      throughput: "Research project",
       language: "Python",
-      latency: "<2s",
+      latency: "Under study",
     },
-    status: "Production",
+    status: "Research",
     logo:
       "https://res.cloudinary.com/ddlegxejs/image/upload/v1782450980/NEXA-AI-Logo_zbmglu.png",
     links: {
@@ -612,19 +653,19 @@ docker compose up -d`,
       ],
     },
     overview:
-      "NEXA AI lets enterprises ask questions about their own documents and get answers grounded in their data — not the public internet. It uses retrieval-augmented generation with citation tracking and confidence scoring to minimize hallucinations.",
+      "NEXA AI is an independent project I am building to understand retrieval-augmented generation (RAG) and how it can be applied to enterprise knowledge. I am exploring document ingestion, chunking and embeddings, vector retrieval, and grounded answer generation, with attention to citations and reducing unsupported responses. It is a learning and research project, not a claim of an enterprise production deployment.",
     problem: [
-      "Generic LLMs hallucinate on proprietary company documents",
-      "Sensitive data can't be sent to public AI services without controls",
-      "Teams need searchable knowledge bases with source citations",
+      "General-purpose language models may not have the context needed to answer questions about a specific organization’s documents",
+      "Enterprise knowledge needs retrieval methods that can surface relevant source material",
+      "Generated answers should be traceable to retrieved content and treated with appropriate confidence",
     ],
     outcomes: [
-      "Grounded answers with source document citations on every response",
-      "Vector search across PDFs, Markdown, and code repositories",
-      "Anti-hallucination guardrails with confidence thresholds",
+      "Study document ingestion and preparation for retrieval",
+      "Explore vector search over documents such as PDFs, Markdown, and code",
+      "Experiment with source-aware answers and guardrails against unsupported responses",
     ],
     architecture:
-      "Document ingestion pipeline chunks and embeds files into pgvector. FastAPI serves query endpoints. RAG pipeline retrieves top-k chunks, constructs context window, and generates answers with citation metadata.",
+      "The research prototype explores a document ingestion pipeline that chunks content and stores embeddings in PostgreSQL with pgvector. A FastAPI service coordinates retrieval and response generation, returning source metadata for inspection.",
     architectureDiagram: `┌────────────┐     ┌─────────────┐     ┌────────────┐
 │  Documents │────▶│  Ingestion  │────▶│  pgvector  │
 │  PDF/MD/Code│     │  Pipeline   │     │  Embeddings│
@@ -673,143 +714,6 @@ async def embed_chunks(chunks: list[str]) -> list[list[float]]:
         input=chunks,
     )
     return [item.embedding for item in response.data]`,
-      },
-    ],
-  },
-  {
-    slug: "unitranslate",
-    navLabel: "unitranslate",
-    method: "GET",
-    category: "TOOLS",
-    title: "UniTranslate",
-    subtitle: "Web + mobile language translation platform",
-    description:
-      "Cross-platform translation application supporting multiple languages with DeepL integration and PWA capabilities.",
-    tech: ["Vue.js", "Python", "Flask", "DeepL API", "PWA"],
-    metrics: {
-      throughput: "1k+ translations/min",
-      language: "Python",
-      latency: "<300ms",
-    },
-    status: "Active",
-    links: {
-      github: "https://github.com/Allan-Davincs/UNITRANSLATE_V2",
-      demo: "https://uni-translate-7fc03e64297f.herokuapp.com/",
-    },
-    overview:
-      "UniTranslate is a web and mobile-ready translation platform that bridges language barriers for users across East Africa and beyond. It combines Vue.js frontend with Flask backend and DeepL API for high-quality translations.",
-    problem: [
-      "Existing translation tools lack offline/PWA support for low-connectivity regions",
-      "Need for batch translation of documents and real-time chat translation",
-      "Mobile-first UX required for primary user base",
-    ],
-    outcomes: [
-      "PWA installable on mobile devices for offline-first access",
-      "Sub-300ms translation latency for short text segments",
-      "Multi-language support with translation history",
-    ],
-    architecture:
-      "Vue.js SPA with service worker for PWA caching. Flask REST API proxies requests to DeepL with rate limiting and caching. Redis optional layer for frequent phrase deduplication.",
-    architectureDiagram: `┌─────────────┐     ┌─────────────┐     ┌──────────┐
-│  Vue.js PWA │────▶│ Flask API   │────▶│  DeepL   │
-│  (Frontend) │     │  (Backend)  │     │  API     │
-└─────────────┘     └─────────────┘     └──────────┘`,
-    apiSchema: `{
-  "endpoint": "POST /api/translate",
-  "request": {
-    "text": "Habari, unahitaji msaada gani?",
-    "sourceLang": "sw",
-    "targetLang": "en"
-  },
-  "response": {
-    "translated": "Hello, what help do you need?",
-    "detectedLang": "sw",
-    "confidence": 0.98,
-    "latencyMs": 245
-  }
-}`,
-    codeSnippets: [
-      {
-        title: "Translation Endpoint",
-        language: "python",
-        code: `# app/routes/translate.py
-@bp.route("/api/translate", methods=["POST"])
-def translate():
-    data = request.get_json()
-    result = deepl_client.translate_text(
-        data["text"],
-        source_lang=data.get("sourceLang", "auto"),
-        target_lang=data["targetLang"],
-    )
-    return jsonify({
-        "translated": result.text,
-        "detectedLang": result.detected_source_lang,
-    })`,
-      },
-    ],
-  },
-  {
-    slug: "terminal-portfolio",
-    navLabel: "terminal-portfolio",
-    method: "GET",
-    category: "TERMINAL",
-    title: "Terminal Portfolio",
-    subtitle: "Cyberpunk-themed interactive developer portfolio",
-    description:
-      "Original terminal-style portfolio with boot sequence, command navigation, bento grid projects, and cyberpunk aesthetics.",
-    tech: ["React", "Vite", "TypeScript", "Tailwind", "Motion"],
-    metrics: {
-      throughput: "Instant",
-      language: "TypeScript",
-      latency: "<16ms",
-    },
-    status: "Production",
-    links: {
-      github: "https://github.com/Allan-Davincs",
-      demo: "https://alan-enock.vercel.app",
-    },
-    overview:
-      "The legacy terminal portfolio at alan-enock.vercel.app — a cyberpunk-themed, command-driven SPA built with Vite and React. Visitors navigate via terminal commands to explore about, skills, experience, and projects. The documentation portfolio (v2) lives at alan-enock-v2.vercel.app.",
-    problem: [],
-    outcomes: [],
-    architecture:
-      "Vite + React SPA with section-based routing via state. Motion library handles page transitions. shadcn/ui components for UI primitives. Dark-mode-only cyberpunk theme with custom CSS variables.",
-    architectureDiagram: `┌─────────────────────────────────────────┐
-│              Terminal Boot              │
-│         (Typing Animation)              │
-└─────────────────┬───────────────────────┘
-                  │
-    ┌─────────────┼─────────────┐
-    ▼             ▼             ▼
-┌────────┐  ┌──────────┐  ┌──────────┐
-│ About  │  │  Skills  │  │ Projects │
-│  /CV   │  │ (separate│  │  Grid    │
-│        │  │Experience│  │          │
-└────────┘  └──────────┘  └──────────┘`,
-    apiSchema: `{
-  "navigation": {
-    "commands": [
-      { "cmd": "./about", "section": "about", "desc": "View CV and personal info" },
-      { "cmd": "./skills", "section": "skills", "desc": "Display technical skills" },
-      { "cmd": "./projects", "section": "projects", "desc": "Browse my projects" },
-      { "cmd": "./experience", "section": "experience", "desc": "View work history" }
-    ]
-  }
-}`,
-    codeSnippets: [
-      {
-        title: "Command Navigation",
-        language: "typescript",
-        code: `// App.tsx — section routing
-const renderSection = () => {
-  switch (currentSection) {
-    case "about": return <AboutCV />;
-    case "skills": return <SkillsTerminal />;
-    case "experience": return <ExperienceTerminal />;
-    case "projects": return <ProjectsTerminal />;
-    default: return <TerminalBoot onNavigate={handleNavigate} />;
-  }
-};`,
       },
     ],
   },

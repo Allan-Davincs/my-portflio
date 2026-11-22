@@ -16,20 +16,25 @@ export function CredentialList({ items, emptyLabel }: CredentialListProps) {
 
   return (
     <div className="not-prose space-y-3">
-      {items.map((item) => (
+      {items.map((item, index) => (
         <div
           key={`${item.title}-${item.issuer}`}
           className="flex flex-col gap-3 rounded-lg border border-border p-4 sm:flex-row sm:items-center sm:justify-between"
         >
-          <div className="min-w-0">
-            <p className="font-medium text-foreground">{item.title}</p>
-            <p className="text-sm text-muted-foreground">
-              {item.issuer}
-              {item.period ? ` · ${item.period}` : ""}
-            </p>
-            {item.description && (
-              <p className="mt-1 text-sm text-muted-foreground">{item.description}</p>
-            )}
+          <div className="flex min-w-0 gap-3">
+            <span className="font-mono text-sm text-muted-foreground">
+              {index + 1}.
+            </span>
+            <div className="min-w-0">
+              <p className="font-medium text-foreground">{item.title}</p>
+              <p className="text-sm text-muted-foreground">
+                {item.issuer}
+                {item.period ? ` · ${item.period}` : ""}
+              </p>
+              {item.description && (
+                <p className="mt-1 text-sm text-muted-foreground">{item.description}</p>
+              )}
+            </div>
           </div>
           <div className="flex shrink-0 flex-wrap gap-2">
             {item.viewUrl && (
@@ -68,7 +73,7 @@ interface AcademicCertificateListProps {
 export function AcademicCertificateList({ items }: AcademicCertificateListProps) {
   return (
     <div className="not-prose space-y-3">
-      {items.map((item) => (
+      {items.map((item, index) => (
         <div key={item.title} className="rounded-lg border border-border p-4">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
             <div className="flex gap-3">
@@ -76,7 +81,12 @@ export function AcademicCertificateList({ items }: AcademicCertificateListProps)
                 <GraduationCap className="h-4 w-4 text-muted-foreground" />
               </div>
               <div>
-                <p className="font-medium text-foreground">{item.title}</p>
+                <p className="font-medium text-foreground">
+                  <span className="mr-2 font-mono text-muted-foreground">
+                    {index + 1}.
+                  </span>
+                  {item.title}
+                </p>
                 <p className="text-sm text-muted-foreground">
                   {item.issuer}
                   {item.period ? ` · ${item.period}` : ""}

@@ -10,11 +10,11 @@
 ## Projects Documented
 
 1. Jenga Online E-Commerce
-2. Flex AI (WhatsApp automation)
-3. VeloRoute Proxy (Go load balancer)
-4. NEXA AI (Enterprise RAG)
-5. UniTranslate
-6. Terminal Portfolio
+2. E-Papers (student examination archive)
+3. KiwandaOS (IoT)
+4. VeloRoute Proxy (Go routing performance research)
+5. Flex AI (WhatsApp automation)
+6. NEXA AI (independent enterprise RAG research)
 
 ## Stack
 
@@ -36,4 +36,4 @@ Open [http://localhost:3000](http://localhost:3000)
 
 ## Tagline
 
-> I Build Systems That Make Your Customers Always Happy
+> I Build Practical Software for Real Operational Needs

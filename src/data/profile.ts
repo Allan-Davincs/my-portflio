@@ -9,19 +9,18 @@ export interface Credential {
 
 export const profile = {
   name: "Alan G Enock",
-  role: "Software Engineer",
-  school: "2nd Year Computer Engineering · Dar es Salaam Institute of Technology (DIT)",
-  tagline: "I Build Systems That Make Your Customers Always Happy",
+  role: "Full-Stack Developer | Systems Operations",
+  school: "3rd Year Computer Engineering · Dar es Salaam Institute of Technology (DIT)",
+  tagline: "I Build Practical Software for Real Operational Needs",
   location: "Dar es Salaam, TZ",
   email: "allandavinc89@gmail.com",
   phone: "+255759637644",
   github: "https://github.com/Allan-Davincs",
-  linkedin: "https://www.linkedin.com/in/alan-enock-02016031a",
+  linkedin: "https://www.linkedin.com/in/alan-g-enock-02016031a/",
   portfolio: "https://alan-enock-v2.vercel.app",
-  avatar:
-    "https://image2url.com/r2/default/images/1770259348076-03eabb5e-a431-4a39-8fde-f8851543dd6b.png",
-  bio: `Software engineer and 2nd-year Computer Engineering student at Dar es Salaam Institute of Technology (DIT). I build modern, scalable web applications and turn complex problems into production-ready systems.`,
-  bioExtended: `With a strong foundation in both frontend and backend technologies — React, Node.js, TypeScript, Go, Python, MongoDB, PostgreSQL, and networking — I'm constantly learning and adapting to new technologies to stay at the forefront of software engineering.`,
+  avatar: "/alan-enock-profile.jpg",
+  bio: `Full-stack developer and third-year Computer Engineering student at Dar es Salaam Institute of Technology (DIT). I build practical web applications and APIs with React, TypeScript, and Node.js, and turn operational needs into reliable, maintainable systems.`,
+  bioExtended: `My experience also includes monitoring operations and investigating cloud infrastructure and networking issues on the CloudOne platform. Through freelance consulting, I build client websites and develop student-focused platforms that make everyday workflows easier.`,
   education: [
     {
       degree: "Bachelor of Engineering in Computer Engineering",
@@ -62,6 +61,24 @@ export const profile = {
       title: "IBM Generative AI Engineering",
       issuer: "IBM",
     },
+    {
+      title: "Certified Cybersecurity Foundations (CORE)",
+      issuer: "Hackviser",
+      period: "July 18, 2026",
+      description: "Certificate ID: HV-CORE-EUXXXJSZ",
+      viewUrl: "https://hackviser.com/verify?id=HV-CORE-EUXXXJSZ",
+      documentUrl: "/certs/hackviser-core-certificate.pdf",
+    },
+    {
+      title: "Certified Red Team Analyst",
+      issuer: "CyberWarfare",
+      period: "In progress",
+    },
+    {
+      title: "AI Red Team Analyst",
+      issuer: "CyberWarfare",
+      period: "In progress",
+    },
   ] satisfies Credential[],
   academicCertificates: [
     {
@@ -74,9 +91,21 @@ export const profile = {
   ] satisfies Credential[],
   experience: [
     {
+      company: "Flashnet Technology",
+      role: "Operational Administration (System Administration) Intern",
+      period: "8 August 2026 - October 2026",
+      location: "Ohio Street, Dar es Salaam, Tanzania",
+      description:
+        "Monitored operations as an intern and helped investigate cloud infrastructure and networking challenges involving the CloudOne platform.",
+      achievements: [
+        "Monitored operational activity and supported day-to-day system administration",
+        "Investigated and helped resolve CloudOne platform infrastructure and networking issues",
+      ],
+    },
+    {
       company: "HAKAVOD COMPANY LIMITED",
       role: "Systems Administrator",
-      period: "May 2026 - Present",
+      period: "May 2026 - July 2026",
       employmentType: "Part-time",
       description:
         "Building and scaling technology solutions for the company, including infrastructure setup, system maintenance, and ongoing technical operations.",
@@ -114,9 +143,11 @@ export const profile = {
       description:
         "As a freelancer under the DavincsTech brand, I engage and educate society while helping businesses and small companies transition into the digital economy through modern technology solutions.",
       achievements: [
-        "Transformed 15+ businesses to digital life by mapping their details on Google Maps",
+        "Helped 15+ businesses establish a digital presence, including Google Maps listings",
         "Improved SEO visibility and online presence for local companies",
-        "Built custom modern digital solutions including payment systems using Snippe and SMS notification systems",
+        "Built client websites: tapsamuhas.org, hakavodcompany.com, hopeforscdfoundation.org, and tulashashe.co.tz",
+        "Maintain and develop DarasaX.com for day-to-day university student activities and epapers.co.tz as a centralized past-exam-paper repository",
+        "Built custom digital solutions including Snippe payment systems and RAFIKI SMS notifications",
       ],
     },
   ],
